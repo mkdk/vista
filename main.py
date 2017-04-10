@@ -1,15 +1,16 @@
 # encoding:utf-8
-import sys
+import json
+import os
 
+from PyQt4.QtCore import pyqtSlot
 from PyQt4.QtGui import *
 from PyQt4.QtSql import *
-from PyQt4.QtCore import Qt, pyqtSlot
 
 from v1 import Ui_MainWindow
 from v1_settings import Ui_Dialog
-
-import os
-import json
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -57,8 +58,7 @@ class StartApp(QMainWindow, Ui_MainWindow):
 
         self.SettingsButton.clicked.connect(self.set_settings)
         self.Find.clicked.connect(self.custom_search)
-
-
+        self.Default.clicked.connect(self.default_values)
 
     @pyqtSlot()
     def set_settings(self):
@@ -111,25 +111,53 @@ class StartApp(QMainWindow, Ui_MainWindow):
         table.setColumnCount(6)
         table.setHorizontalHeaderLabels(['Name', 'Birthday', 'Gender', 'SNILS', 'Passport', "Policy"])
         query = QSqlQuery(self.db)
-        query.exec_("""SELECT firstName, patrName, lastName, birthDate, sex, SNILS, ClientDocument.serial, ClientDocument.number, ClientPolicy.serial, ClientPolicy.number from Client JOIN ClientDocument ON Client.id=ClientDocument.client_id JOIN ClientPolicy ON Client.id=ClientPolicy.client_id""")
+        query.exec_("""SELECT firstName, patrName, lastName, birthDate, sex, SNILS,
+                        ClientDocument.serial, ClientDocument.number, ClientPolicy.serial,
+                        ClientPolicy.number from Client JOIN ClientDocument ON
+                        Client.id=ClientDocument.client_id JOIN ClientPolicy ON
+                        Client.id=ClientPolicy.client_id""")
         # show table
         self.values_into_result_table(query, table)
+
+    def parse_arguments(self):
+        """parsing parametrs for filter"""
+        data = {}
+        arguments = [self.NameText, self.Name2Text, self.FamilyText,
+                     self.serialPassEdit, self.numberPassEdit, self.serialPoliceEdit,
+                     self.numberPoliceEdit, self.sexEdit, self.birthdayEdit]
+
+        for argument in arguments:
+            v = str(argument.toPlainText())
+            v = v.replace('\n',  '')
+            k = str(argument.property('field').toPyObject())
+            data[k] = v
+        return data
 
     def custom_search(self):
         """query to db with filter"""
+        q = """ SELECT firstName, patrName, lastName, birthDate, sex, SNILS, ClientDocument.serial,
+            ClientDocument.number, ClientPolicy.serial, ClientPolicy.number from Client JOIN ClientDocument
+            ON Client.id=ClientDocument.client_id JOIN ClientPolicy ON Client.id=ClientPolicy.client_id WHERE """
         table = self.ResultTable
+        table.setRowCount(0)
+        table.setColumnCount(0)
         table.setColumnCount(6)
         table.setHorizontalHeaderLabels(['Name', 'Birthday', 'Gender', 'SNILS', 'Passport', 'Policy'])
+
+        data = self.parse_arguments()
+        first = True
+        for k in data.iterkeys():
+            if len(data[k].strip()) != 0:
+                if first:
+                    q += ' %s="%s"'% (k, data[k])
+                    first = False
+                else:
+                    q += ' and %s="%s"' % (k, data[k])
         query = QSqlQuery(self.db)
-        query.exec_(
-            """ SELECT firstName, patrName, lastName, birthDate, sex, SNILS, ClientDocument.serial,
-            ClientDocument.number, ClientPolicy.serial, ClientPolicy.number from Client JOIN ClientDocument
-            ON Client.id=ClientDocument.client_id JOIN ClientPolicy ON Client.id=ClientPolicy.client_id""")
+        print '+'*10, q
+        query.exec_(str(q))
         # show table
         self.values_into_result_table(query, table)
-
-
-
 
 
 def main():
