@@ -25,11 +25,11 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(779, 504)
+        MainWindow.resize(786, 485)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.Find = QtGui.QPushButton(self.centralwidget)
-        self.Find.setGeometry(QtCore.QRect(470, 300, 291, 61))
+        self.Find.setGeometry(QtCore.QRect(20, 370, 741, 61))
         self.Find.setObjectName(_fromUtf8("Find"))
         self.NameText = QtGui.QTextEdit(self.centralwidget)
         self.NameText.setGeometry(QtCore.QRect(20, 300, 221, 21))
@@ -40,15 +40,12 @@ class Ui_MainWindow(object):
         self.Name2Text = QtGui.QTextEdit(self.centralwidget)
         self.Name2Text.setGeometry(QtCore.QRect(20, 340, 221, 21))
         self.Name2Text.setObjectName(_fromUtf8("Name2Text"))
-        self.Default = QtGui.QPushButton(self.centralwidget)
-        self.Default.setGeometry(QtCore.QRect(470, 380, 291, 61))
-        self.Default.setObjectName(_fromUtf8("Default"))
-        self.textEdit_4 = QtGui.QTextEdit(self.centralwidget)
-        self.textEdit_4.setGeometry(QtCore.QRect(260, 260, 191, 21))
-        self.textEdit_4.setObjectName(_fromUtf8("textEdit_4"))
-        self.textEdit_5 = QtGui.QTextEdit(self.centralwidget)
-        self.textEdit_5.setGeometry(QtCore.QRect(260, 300, 191, 21))
-        self.textEdit_5.setObjectName(_fromUtf8("textEdit_5"))
+        self.numberPassEdit = QtGui.QTextEdit(self.centralwidget)
+        self.numberPassEdit.setGeometry(QtCore.QRect(320, 260, 131, 21))
+        self.numberPassEdit.setObjectName(_fromUtf8("numberPassEdit"))
+        self.numberPoliceEdit = QtGui.QTextEdit(self.centralwidget)
+        self.numberPoliceEdit.setGeometry(QtCore.QRect(320, 300, 131, 21))
+        self.numberPoliceEdit.setObjectName(_fromUtf8("numberPoliceEdit"))
         self.textEdit_6 = QtGui.QTextEdit(self.centralwidget)
         self.textEdit_6.setGeometry(QtCore.QRect(260, 340, 191, 21))
         self.textEdit_6.setObjectName(_fromUtf8("textEdit_6"))
@@ -65,10 +62,10 @@ class Ui_MainWindow(object):
         self.label_4.setGeometry(QtCore.QRect(100, 330, 52, 14))
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.label_5 = QtGui.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(320, 250, 52, 14))
+        self.label_5.setGeometry(QtCore.QRect(390, 250, 52, 14))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.label_6 = QtGui.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(320, 290, 52, 14))
+        self.label_6.setGeometry(QtCore.QRect(400, 290, 52, 14))
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.label_7 = QtGui.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(320, 330, 101, 16))
@@ -85,14 +82,31 @@ class Ui_MainWindow(object):
         self.label_8.setGeometry(QtCore.QRect(580, 250, 52, 14))
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.SettingsButton = QtGui.QToolButton(self.centralwidget)
-        self.SettingsButton.setGeometry(QtCore.QRect(20, 380, 431, 61))
+        self.SettingsButton.setGeometry(QtCore.QRect(470, 300, 291, 61))
         self.SettingsButton.setObjectName(_fromUtf8("SettingsButton"))
+        self.serialPassEdit = QtGui.QTextEdit(self.centralwidget)
+        self.serialPassEdit.setGeometry(QtCore.QRect(260, 260, 51, 21))
+        self.serialPassEdit.setObjectName(_fromUtf8("serialPassEdit"))
+        self.label_9 = QtGui.QLabel(self.centralwidget)
+        self.label_9.setGeometry(QtCore.QRect(260, 250, 52, 14))
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.label_10 = QtGui.QLabel(self.centralwidget)
+        self.label_10.setGeometry(QtCore.QRect(320, 250, 52, 14))
+        self.label_10.setObjectName(_fromUtf8("label_10"))
+        self.serialPoliceEdit = QtGui.QTextEdit(self.centralwidget)
+        self.serialPoliceEdit.setGeometry(QtCore.QRect(260, 300, 51, 21))
+        self.serialPoliceEdit.setObjectName(_fromUtf8("serialPoliceEdit"))
+        self.label_11 = QtGui.QLabel(self.centralwidget)
+        self.label_11.setGeometry(QtCore.QRect(260, 290, 52, 14))
+        self.label_11.setObjectName(_fromUtf8("label_11"))
+        self.label_12 = QtGui.QLabel(self.centralwidget)
+        self.label_12.setGeometry(QtCore.QRect(320, 290, 52, 14))
+        self.label_12.setObjectName(_fromUtf8("label_12"))
         self.Find.raise_()
         self.NameText.raise_()
         self.Name2Text.raise_()
-        self.Default.raise_()
-        self.textEdit_4.raise_()
-        self.textEdit_5.raise_()
+        self.numberPassEdit.raise_()
+        self.numberPoliceEdit.raise_()
         self.textEdit_6.raise_()
         self.label.raise_()
         self.label_2.raise_()
@@ -106,12 +120,18 @@ class Ui_MainWindow(object):
         self.label_8.raise_()
         self.FamilyText.raise_()
         self.SettingsButton.raise_()
+        self.serialPassEdit.raise_()
+        self.label_9.raise_()
+        self.label_10.raise_()
+        self.serialPoliceEdit.raise_()
+        self.label_11.raise_()
+        self.label_12.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 779, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 786, 26))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuAbout = QtGui.QMenu(self.menubar)
         self.menuAbout.setObjectName(_fromUtf8("menuAbout"))
@@ -149,13 +169,12 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.Default.setText(_translate("MainWindow", "Default Table", None))
-        self.textEdit_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.numberPassEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.textEdit_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.numberPoliceEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
@@ -179,6 +198,20 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.label_8.setText(_translate("MainWindow", "Birthday", None))
         self.SettingsButton.setText(_translate("MainWindow", "Settings", None))
+        self.serialPassEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+        self.label_9.setText(_translate("MainWindow", "Serial", None))
+        self.label_10.setText(_translate("MainWindow", "Number", None))
+        self.serialPoliceEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+        self.label_11.setText(_translate("MainWindow", "Serial", None))
+        self.label_12.setText(_translate("MainWindow", "Number", None))
         self.menuAbout.setTitle(_translate("MainWindow", "about", None))
         self.actionClose.setText(_translate("MainWindow", "close", None))
         self.actionSettings.setText(_translate("MainWindow", "settings", None))
